@@ -26,4 +26,7 @@ const startServer = async () => {
 
 };
 
+const leaseRoutes = require("./routes/leaseRoutes");
+app.use("/api/leases", leaseRoutes);
+
 startServer();
