@@ -32,4 +32,7 @@ app.use("/api/leases", leaseRoutes);
 const inspectionRoutes = require("./routes/inspectionRoutes");
 app.use("/api/inspections", inspectionRoutes);
 
+const listingRoutes = require("./routes/listingRoutes");
+app.use("/api/listings", listingRoutes);
+
 startServer();
