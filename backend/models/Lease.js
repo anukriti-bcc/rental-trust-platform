@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 
 const leaseSchema = new mongoose.Schema({
 
+    listing: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Listing",
+        required: true
+    },
+
     landlord: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
@@ -11,11 +17,6 @@ const leaseSchema = new mongoose.Schema({
     tenant: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-        required: true
-    },
-
-    propertyAddress: {
-        type: String,
         required: true
     },
 
