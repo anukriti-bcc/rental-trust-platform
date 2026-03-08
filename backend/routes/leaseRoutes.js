@@ -125,4 +125,32 @@ router.patch("/:id/approve", authMiddleware, async (req, res) => {
 
 });
 
+router.get("/my", authMiddleware, async (req, res) => {
+
+    try {
+
+        let leases;
+
+        if (req.user.role === "tenant") {
+
+            leases = await Lease.find({ tenant: req.user.id })
+                .populate("listing");
+
+        } else if (req.user.role === "landlord") {
+
+            leases = await Lease.find({ landlord: req.user.id })
+                .populate("listing");
+
+        }
+
+        res.json(leases);
+
+    } catch (error) {
+
+        res.status(500).json({ error: error.message });
+
+    }
+
+});
+
 module.exports = router;
